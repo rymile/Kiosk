@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       this.belongsTo(models.Item, {
-        sourceKey: "itemId",
+        targetKey: "itemId",
         foreignKey: "ItemId",
       });
       // define association here
@@ -33,6 +33,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: 0,
       },
       state: {
+        allowNull: false,
         type: DataTypes.INTEGER,
       },
       createdAt: {
