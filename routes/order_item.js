@@ -7,8 +7,8 @@ router.post("/order/:itemId", async (req, res) => {
   const { itemId } = req.params;
   const { amount, state } = req.body;
 
-  const Items = await Item.findOne({ where: { itemId } });
-  if (Items) {
+  const item = await Item.findOne({ where: { itemId } });
+  if (!item) {
     return res.status(400).json({ message: "상품을 찾을 수 없습니다." });
   }
 
