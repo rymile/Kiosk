@@ -13,6 +13,14 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: "itemId",
         foreignKey: "ItemId",
       });
+      this.hasMany(models.Order_Customer, {
+        sourceKey: "itemId",
+        foreignKey: "ItemId",
+      });
+      this.hasOne(models.Item_Order_Customer, {
+        sourceKey: "itemId",
+        foreignKey: "ItemId",
+      });
     }
   }
   Item.init(
