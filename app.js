@@ -1,6 +1,6 @@
 const express = require("express");
 const ItemRouter = require("./routes/item");
-// const OrderRouter = require("./routes/order_item");
+const OrderRouter = require("./routes/order_item");
 // const CustomerRouter = require("./routes/order_customer");
 
 class Server {
@@ -16,7 +16,7 @@ class Server {
   }
 
   setupRoutes() {
-    this.app.use("/api", [ItemRouter]);
+    this.app.use("/api", [ItemRouter, OrderRouter]);
   }
 
   start() {

@@ -86,6 +86,7 @@ class ItemRouter {
       return res.status(500).json({ message: "서버 오류가 발생했습니다." });
     }
   }
+  //상품 삭제
   async removeItem(req, res) {
     const { itemId } = req.params;
 
