@@ -1,13 +1,30 @@
 const express = require("express");
 const ItemRouter = require("./routes/item");
-const OrderRouter = require("./routes/order_item");
-const CustomerRouter = require("./routes/order_customer");
-const app = express();
-const port = 3005;
+// const OrderRouter = require("./routes/order_item");
+// const CustomerRouter = require("./routes/order_customer");
 
-app.use(express.json());
-app.use("/api", [ItemRouter, OrderRouter, CustomerRouter]);
+class Server {
+  constructor(port) {
+    this.port = port;
+    this.app = express();
+    this.setupMiddlewares();
+    this.setupRoutes();
+  }
 
-app.listen(port, () => {
-  console.log(port, "서버 실행");
-});
+  setupMiddlewares() {
+    this.app.use(express.json());
+  }
+
+  setupRoutes() {
+    this.app.use("/api", [ItemRouter]);
+  }
+
+  start() {
+    this.app.listen(this.port, () => {
+      console.log(`${this.port} 번호로 서버가 실행되었습니다.`);
+    });
+  }
+}
+
+const myServer = new Server(3005);
+myServer.start();

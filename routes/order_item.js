@@ -35,7 +35,7 @@ router.get("/order/", async (req, res) => {
     // 내림차순으로 정렬
     order: [["createdAt", "DESC"]],
   });
-  // 댓글이 잘 조회되었을 경우 Order_Item 정보를 보여준다.
+  // 상품이 잘 조회되었을 경우 Order_Item 정보를 보여준다.
   return res.status(200).json({ data: getOrder });
 });
 
